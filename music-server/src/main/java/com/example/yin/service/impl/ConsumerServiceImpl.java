@@ -41,8 +41,10 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
         if (this.existUser(registryRequest.getUsername())) {
             return R.warning("用户名已注册");
         }
+
         Consumer consumer = new Consumer();
         BeanUtils.copyProperties(registryRequest, consumer);
+
         //MD5加密
         String password = DigestUtils.md5DigestAsHex((SALT + registryRequest.getPassword()).getBytes(StandardCharsets.UTF_8));
         consumer.setPassword(password);
