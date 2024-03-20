@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 
 import static com.example.yin.constant.Constants.SALT;
 
+// 注意：不但要实现，还要继承！
 @Service
 public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
         implements ConsumerService {
@@ -36,6 +37,7 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
      */
     @Override
     public R addUser(ConsumerRequest registryRequest) {
+
         if (this.existUser(registryRequest.getUsername())) {
             return R.warning("用户名已注册");
         }
